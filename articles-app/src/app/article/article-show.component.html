@@ -1,0 +1,47 @@
+<div class="page-wrapper" *ngIf="article">
+    <div *ngIf="editBtnClicked; else elseBlock">
+        <h1> {{article.title}} </h1>
+
+        <span class="date">
+            Posted on {{article.created_at | date}} | Last Updated  {{article.updated_at | date}}
+        </span>
+        
+        <p class="desc"> {{article.description}} </p>
+    
+        <div class="action-btn">
+            <a class="edit-btn" (click)="editBtnClicked = !editBtnClicked">Edit <i class="fas fa-edit"></i></a>
+            <a class="delete-btn" (click)="delete(article)">Delete <i class="fas fa-trash"></i></a>
+        </div>
+    </div>
+
+    <ng-template #elseBlock>
+        <form #postForm='ngForm'>
+            <div>
+                <label>Title:</label>
+                
+                <input type="text" name="title" placeholder="Give a title to your article.." 
+                #title='ngModel' [(ngModel)]='article.title' required/>
+                
+                <div class="error" [hidden]='title.valid || title.pristine'>Title is required.</div>
+            </div>
+            
+            <div>
+                <label>Description:</label>
+                
+                <textarea name="description" placeholder="What is your article all about.."
+                #description='ngModel' [(ngModel)]='article.description' required></textarea>
+                
+                <div class="error" [hidden]='description.valid || description.pristine'>
+                    Description is required.
+                </div>
+            </div>
+            
+            <div class="action-btn">
+                    <a class="update-btn" (click)="update(article)"> Update <i class="fas fa-check"></i></a>
+                    <a class="cancel-btn" (click)="editBtnClicked = !editBtnClicked">Cancel <i class="fas fa-times"></i></a>
+            </div>
+        </form>
+    </ng-template>
+</div>
+    
+    

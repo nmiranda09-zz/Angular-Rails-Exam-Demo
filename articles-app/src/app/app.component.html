@@ -1,0 +1,31 @@
+<div class="header-wrapper">
+    <header>
+        <a routerLink="" routerLinkActive="active"><img src="assets/img/nm_logo.png"></a>
+    
+        <nav [ngClass]="{'nav-active' : toggle}">
+            <div class="toggle-btn" (click)="clickEvent($event)" [ngClass]="{'active' : toggle}">                
+                <i class="fas fa-bars"></i>
+            </div>
+                
+            <div class="navbar-container">
+                <ul>    
+                    <li>    
+                        <a routerLink="" routerLinkActive="active">Home</a>    
+                    </li>
+
+                    <li class="nav-item">    
+                        <a routerLink="articles" routerLinkActive="active">Articles</a>    
+                    </li>
+
+                    <li class="nav-item">    
+                        <a routerLink="articles/new" routerLinkActive="active">Add Article</a>    
+                    </li>
+                </ul>    
+            </div>    
+        </nav>
+        </header>
+</div>
+
+<router-outlet></router-outlet>
+
+<footer><p>Copyright &copy; 2019 | Angular - Rails Api Demo</p></footer>

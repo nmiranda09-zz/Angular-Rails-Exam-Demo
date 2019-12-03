@@ -1,0 +1,20 @@
+<div class="page-wrapper article">
+    <h1>All Articles</h1>
+
+    <div class="articles-container">
+        <div class="article" *ngFor="let article of articles">
+            <h3 class="title"> {{article.title}} </h3>
+
+            <span class="date">
+                Posted on {{article.created_at | date}} | Last Updated  {{article.updated_at | date}}
+            </span>
+            
+            <p class="desc"> {{article.description}} </p>
+    
+            <div class="action-btn">
+                <a class="read-more-btn" (click)="goToShow(article)"> Read More</a>
+            </div>
+        </div>
+    </div>
+</div>
+
